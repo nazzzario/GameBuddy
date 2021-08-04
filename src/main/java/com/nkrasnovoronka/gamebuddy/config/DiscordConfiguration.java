@@ -1,5 +1,10 @@
 package com.nkrasnovoronka.gamebuddy.config;
 
+import com.nkrasnovoronka.gamebuddy.listeners.NewUserListener;
+import com.nkrasnovoronka.gamebuddy.listeners.PingListener;
+import com.nkrasnovoronka.gamebuddy.listeners.PlayListener;
+import com.nkrasnovoronka.gamebuddy.service.MessagingService;
+import lombok.AllArgsConstructor;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -8,13 +13,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
 @Configuration
+@AllArgsConstructor
 public class DiscordConfiguration {
 
     private final Environment env;
-
-    public DiscordConfiguration(Environment env) {
-        this.env = env;
-    }
+    private final PingListener pingListener;
+    private final PlayListener playListener;
 
     @Bean
     @ConfigurationProperties(value = "discord-api")
@@ -25,12 +29,8 @@ public class DiscordConfiguration {
                 .setAllNonPrivilegedIntents()
                 .login()
                 .join();
-
-        discordApi.addMessageCreateListener(event -> {
-           if(event.getMessage().getContent().equalsIgnoreCase("Hi bot")){
-               event.getChannel().sendMessage("Hello "  + event.getMessageAuthor().getName());
-           }
-        });
+        discordApi.addMessageCreateListener(pingListener);
+        discordApi.addMessageCreateListener(playListener);
         return discordApi;
     }
 
