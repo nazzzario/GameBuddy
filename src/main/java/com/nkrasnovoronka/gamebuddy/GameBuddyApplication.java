@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GameBuddyApplication {
 
     public static void main(String[] args) {
+        //todo Deploy bot to Herouku and config CI/CD ASAP
         SpringApplication.run(GameBuddyApplication.class, args);
     }
 }
