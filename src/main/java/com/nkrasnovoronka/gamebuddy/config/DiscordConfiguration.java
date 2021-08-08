@@ -33,19 +33,19 @@ public class DiscordConfiguration {
         discordApi.addMessageCreateListener(playListener);
         discordApi.addMessageCreateListener(printGamesListener);
         //todo run this command one time and all discord will register this command
-        SlashCommand command = SlashCommand.with("ping", "Checks the functionality of this command")
-                .createGlobal(discordApi)
-                .join();
+//        SlashCommand command = SlashCommand.with("ping", "Checks the functionality of this command")
+//                .createGlobal(discordApi)
+//                .join();
 
-//        discordApi.addSlashCommandCreateListener(event -> {
-//            SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
-//            if (slashCommandInteraction.getCommandName().equals("ping")) {
-//                slashCommandInteraction.createImmediateResponder()
-//                        .setContent("Pong!")
-//                        .setFlags(MessageFlag.EPHEMERAL)
-//                        .respond();
-//            }
-//        });
+        discordApi.addSlashCommandCreateListener(event -> {
+            SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
+            if (slashCommandInteraction.getCommandName().equals("ping")) {
+                slashCommandInteraction.createImmediateResponder()
+                        .setContent("Pong!")
+                        .setFlags(MessageFlag.EPHEMERAL)
+                        .respond();
+            }
+        });
 
         return discordApi;
     }
