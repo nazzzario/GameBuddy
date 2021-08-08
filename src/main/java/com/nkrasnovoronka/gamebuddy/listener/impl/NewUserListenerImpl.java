@@ -1,6 +1,6 @@
-package com.nkrasnovoronka.gamebuddy.listeners.impl;
+package com.nkrasnovoronka.gamebuddy.listener.impl;
 
-import com.nkrasnovoronka.gamebuddy.listeners.NewUserListener;
+import com.nkrasnovoronka.gamebuddy.listener.NewUserListener;
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.event.server.member.ServerMemberJoinEvent;
 import org.springframework.stereotype.Component;

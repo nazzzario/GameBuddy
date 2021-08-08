@@ -1,7 +1,7 @@
-package com.nkrasnovoronka.gamebuddy.listeners.impl;
+package com.nkrasnovoronka.gamebuddy.listener.impl;
 
-import com.nkrasnovoronka.gamebuddy.listeners.PrintGamesListener;
-import com.nkrasnovoronka.gamebuddy.service.impl.GameService;
+import com.nkrasnovoronka.gamebuddy.listener.PrintGamesListener;
+import com.nkrasnovoronka.gamebuddy.service.impl.GameServiceImpl;
 import lombok.AllArgsConstructor;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class PrintGamesListenerImpl implements PrintGamesListener {
-    private GameService gameService;
+    private GameServiceImpl gameService;
 
     @Override
     public void onMessageCreate(MessageCreateEvent event) {

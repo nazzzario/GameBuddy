@@ -1,4 +1,4 @@
-package com.nkrasnovoronka.gamebuddy.listeners;
+package com.nkrasnovoronka.gamebuddy.listener;
 
 import org.javacord.api.listener.message.MessageCreateListener;
 
